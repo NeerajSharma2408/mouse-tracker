@@ -2,6 +2,58 @@ import { useEffect } from 'react'
 
 const GameArea = () => {
 
+    const shrink = () => {
+        const myDiv = document.getElementById('target');
+
+        let size = null;
+
+        clearInterval(size);
+
+        size = setInterval(() => {
+            let w = Number((myDiv.style.width).slice(0, (myDiv.style.width).length - 2))
+            let h = Number((myDiv.style.height).slice(0, (myDiv.style.height).length - 2))
+            if (w > 0) {
+                myDiv.style.width = `${w - 1}px`;
+                myDiv.style.height = `${h - 1}px`;
+            } else {
+                clearInterval(size);
+            }
+        }, 1);
+    }
+
+    const posChange = ()=>{
+        const myDiv = document.getElementById('target');
+
+        setTimeout(() => {
+            const top = Math.abs(Math.round(Math.random(400) * 1000 - 550)) + 50
+            const left = Math.abs(Math.round(Math.random(400) * 1000 - 400)) + 50
+
+            e.target.style.top = `${top}px`
+            e.target.style.left = `${left}px`
+        }, 100);
+    }
+
+    const expand = ()=>{
+        const myDiv = document.getElementById('target');
+
+        setTimeout(() => {
+            let s = null;
+
+            clearInterval(s)
+
+            s = setInterval(() => {
+                let w = Number((myDiv.style.width).slice(0, (myDiv.style.width).length - 2))
+                let h = Number((myDiv.style.height).slice(0, (myDiv.style.height).length - 2))
+                if (w < 50) {
+                    myDiv.style.width = `${w + 1}px`;
+                    myDiv.style.height = `${h + 1}px`;
+                } else {
+                    clearInterval(s);
+                }
+            }, 1);
+        }, 120);
+    }
+
     const initialStart = () => {
         const myDiv = document.getElementById("game-area");
 
@@ -23,6 +75,9 @@ const GameArea = () => {
 
         d.addEventListener("click", (e) => {
 
+            // BELOW APPROACH IS NOT WORKING CORRECTLY CHANGE IT WITH USING THE PROMISE AND AWAIT METHOD
+
+            shrink();
 
             // BELOW CODE IS TO MAKE THE TARGETS MOVE SLOWLY
             // let a = e.target.style.top;
@@ -32,11 +87,7 @@ const GameArea = () => {
 
             // I CAN ALSO MAKE THE ANIMATION OF THE TARGET FIRST SHRINKING THEN MOVING TO THE NEXT POSITION  AND THEN INCREASIGN IN SIZE TO GIVE A TECHY VIBE
 
-            const top = Math.abs(Math.round(Math.random(400) * 1000 - 550)) + 50
-            const left = Math.abs(Math.round(Math.random(400) * 1000 - 400)) + 50
-
-            e.target.style.top = `${top}px`
-            e.target.style.left = `${left}px`
+            posChange();
 
             // BELOW CODE IS TO MAKE THE TARGETS MOVE SLOWLY
             //     console.log(top + " " + left)
@@ -62,6 +113,8 @@ const GameArea = () => {
             //         }
             //         console.log(t + " " + l);
             //     }, 1)
+
+            expand();
 
         })
 
