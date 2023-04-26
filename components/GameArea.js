@@ -1,111 +1,131 @@
 import { useEffect } from 'react'
 
+import anime from 'animejs';
+import Script from 'next/script';
+
 const GameArea = () => {
+    
 
-    const shrink = () => {
-        const myDiv = document.getElementById('target');
+    // const shrink = () => {
+    //     const myDiv = document.getElementById('target');
 
-        let size = null;
+    //     let size = null;
 
-        clearInterval(size);
+    //     clearInterval(size);
 
-        size = setInterval(() => {
-            let w = Number((myDiv.style.width).slice(0, (myDiv.style.width).length - 2))
-            let h = Number((myDiv.style.height).slice(0, (myDiv.style.height).length - 2))
-            if (w > 0) {
-                myDiv.style.width = `${w - 1}px`;
-                myDiv.style.height = `${h - 1}px`;
-            } else {
-                clearInterval(size);
-            }
-        }, 1);
-    }
+    //     size = setInterval(() => {
+    //         let w = Number((myDiv.style.width).slice(0, (myDiv.style.width).length - 2))
+    //         let h = Number((myDiv.style.height).slice(0, (myDiv.style.height).length - 2))
+    //         if (w > 0) {
+    //             myDiv.style.width = `${w - 1}px`;
+    //             myDiv.style.height = `${h - 1}px`;
+    //         } else {
+    //             clearInterval(size);
+    //         }
+    //     }, 1);
+    // }
 
-    const posChange = () => {
-        const myDiv = document.getElementById('target');
+    // const posChange = () => {
+    //     const myDiv = document.getElementById('target');
 
-        setTimeout(() => {
-            const top = Math.abs(Math.round(Math.random(400) * 1000 - 550)) + 50
-            const left = Math.abs(Math.round(Math.random(400) * 1000 - 400)) + 50
+    //     setTimeout(() => {
+    //         const top = Math.abs(Math.round(Math.random(400) * 1000 - 550)) + 50
+    //         const left = Math.abs(Math.round(Math.random(400) * 1000 - 400)) + 50
 
-            myDiv.style.top = `${top}px`
-            myDiv.style.left = `${left}px`
-        }, 600);
-    }
+    //         myDiv.style.top = `${top}px`
+    //         myDiv.style.left = `${left}px`
+    //     }, 600);
+    // }
 
-    const expand = () => {
-        const myDiv = document.getElementById('target');
+    // const expand = () => {
+    //     const myDiv = document.getElementById('target');
 
-        setTimeout(() => {
-            let s = null;
+    //     setTimeout(() => {
+    //         let s = null;
 
-            clearInterval(s)
+    //         clearInterval(s)
 
-            s = setInterval(() => {
-                let w = Number((myDiv.style.width).slice(0, (myDiv.style.width).length - 2))
-                let h = Number((myDiv.style.height).slice(0, (myDiv.style.height).length - 2))
-                if (w < 50) {
-                    myDiv.style.width = `${w + 1}px`;
-                    myDiv.style.height = `${h + 1}px`;
-                } else {
-                    clearInterval(s);
-                }
-            }, 1);
-        }, 1000);
-    }
+    //         s = setInterval(() => {
+    //             let w = Number((myDiv.style.width).slice(0, (myDiv.style.width).length - 2))
+    //             let h = Number((myDiv.style.height).slice(0, (myDiv.style.height).length - 2))
+    //             if (w < 50) {
+    //                 myDiv.style.width = `${w + 1}px`;
+    //                 myDiv.style.height = `${h + 1}px`;
+    //             } else {
+    //                 clearInterval(s);
+    //             }
+    //         }, 1);
+    //     }, 1000);
+    // }
 
-    const animation = async () => {
+    // const animation = async () => {
 
-        const promise1 = new Promise((resolve, reject) => {
-            const myDiv = document.getElementById('target');
+    //     const promise1 = new Promise((resolve, reject) => {
+    //         const myDiv = document.getElementById('target');
 
-            let size = null;
+    //         let size = null;
 
-            clearInterval(size);
+    //         clearInterval(size);
 
-            size = setInterval(() => {
-                let w = Number((myDiv.style.width).slice(0, (myDiv.style.width).length - 2))
-                let h = Number((myDiv.style.height).slice(0, (myDiv.style.height).length - 2))
-                if (w > 0) {
-                    myDiv.style.width = `${w - 1}px`;
-                    myDiv.style.height = `${h - 1}px`;
-                } else {
-                    clearInterval(size);
-                }
-            }, 1);
+    //         size = setInterval(() => {
+    //             let w = Number((myDiv.style.width).slice(0, (myDiv.style.width).length - 2))
+    //             let h = Number((myDiv.style.height).slice(0, (myDiv.style.height).length - 2))
+    //             if (w > 0) {
+    //                 myDiv.style.width = `${w - 1}px`;
+    //                 myDiv.style.height = `${h - 1}px`;
+    //             } else {
+    //                 clearInterval(size);
+    //             }
+    //         }, 1);
 
-            setTimeout(()=>{
-                resolve("shifting to next step");
-            }, 1000);
-        });
+    //         setTimeout(()=>{
+    //             resolve("shifting to next step");
+    //         }, 1000);
+    //     });
 
-        promise1.then((value) => {
+    //     promise1.then((value) => {
             
-            const myDiv = document.getElementById('target');
+    //         const myDiv = document.getElementById('target');
 
-            const top = Math.abs(Math.round(Math.random(400) * 1000 - 550)) + 50
-            const left = Math.abs(Math.round(Math.random(400) * 1000 - 400)) + 50
+    //         const top = Math.abs(Math.round(Math.random(400) * 1000 - 550)) + 50
+    //         const left = Math.abs(Math.round(Math.random(400) * 1000 - 400)) + 50
 
-            myDiv.style.top = `${top}px`
-            myDiv.style.left = `${left}px`
+    //         myDiv.style.top = `${top}px`
+    //         myDiv.style.left = `${left}px`
 
-            let s = null;
+    //         let s = null;
 
-            clearInterval(s)
+    //         clearInterval(s)
 
-            s = setInterval(() => {
-                let w = Number((myDiv.style.width).slice(0, (myDiv.style.width).length - 2))
-                let h = Number((myDiv.style.height).slice(0, (myDiv.style.height).length - 2))
-                if (w < 50) {
-                    myDiv.style.width = `${w + 1}px`;
-                    myDiv.style.height = `${h + 1}px`;
-                } else {
-                    clearInterval(s);
-                }
-            }, 1);
-        });
+    //         s = setInterval(() => {
+    //             let w = Number((myDiv.style.width).slice(0, (myDiv.style.width).length - 2))
+    //             let h = Number((myDiv.style.height).slice(0, (myDiv.style.height).length - 2))
+    //             if (w < 50) {
+    //                 myDiv.style.width = `${w + 1}px`;
+    //                 myDiv.style.height = `${h + 1}px`;
+    //             } else {
+    //                 clearInterval(s);
+    //             }
+    //         }, 1);
+    //     });
 
-        console.log(promise1);
+    //     console.log(promise1);
+    // }
+
+    const animeAnimation = ()=>{
+
+        const myDiv = document.getElementById('target');
+
+        const top = Math.abs(Math.round(Math.random(400) * 1000 - 550)) + 50
+        const left = Math.abs(Math.round(Math.random(400) * 1000 - 400)) + 50
+
+        anime({
+
+            targets: myDiv,
+            translateX: top,
+            translateY: left,
+            rotate: 540
+          });
     }
 
     const initialStart = () => {
@@ -129,7 +149,8 @@ const GameArea = () => {
 
         d.addEventListener("click", (e) => {
 
-            animation();
+            animeAnimation();
+            // animation();
 
             // BELOW APPROACH IS NOT WORKING CORRECTLY CHANGE IT WITH USING THE PROMISE AND AWAIT METHOD
             // FIRST TRY TO ADD THE EXPAND CODE IN THE POS CHANGE FUNCTION
@@ -188,10 +209,15 @@ const GameArea = () => {
         initialStart()
     })
 
-    return (
-        <div id='game-area'>
 
-        </div>
+    return (
+        <>
+            <Script src="anime.min.js"></Script>
+            <div id='game-area'>
+
+            </div>
+        </>
+
     )
 }
 
