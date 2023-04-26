@@ -116,14 +116,16 @@ const GameArea = () => {
 
         const myDiv = document.getElementById('target');
 
-        const top = Math.abs(Math.round(Math.random(400) * 1000 - 550)) + 50
-        const left = Math.abs(Math.round(Math.random(400) * 1000 - 400)) + 50
+        let top = Math.floor(Math.random() * (600 - 80)) + 80;
+        let left = Math.floor(Math.random() * (1200 - 100)) + 100;
+
+        top = top - Number(myDiv.style.width.slice(0, myDiv.style.width.length-2));
+        left = left - Number(myDiv.style.width.slice(0, myDiv.style.width.length-2));
 
         anime({
-
             targets: myDiv,
-            translateX: top,
-            translateY: left,
+            translateX: left,
+            translateY: top,
             rotate: 540
           });
     }
@@ -213,6 +215,7 @@ const GameArea = () => {
     return (
         <>
             <Script src="anime.min.js"></Script>
+
             <div id='game-area'>
 
             </div>
