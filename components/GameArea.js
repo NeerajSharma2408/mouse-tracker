@@ -28,9 +28,9 @@ const GameArea = () => {
             const top = Math.abs(Math.round(Math.random(400) * 1000 - 550)) + 50
             const left = Math.abs(Math.round(Math.random(400) * 1000 - 400)) + 50
 
-            e.target.style.top = `${top}px`
-            e.target.style.left = `${left}px`
-        }, 100);
+            myDiv.style.top = `${top}px`
+            myDiv.style.left = `${left}px`
+        }, 600);
     }
 
     const expand = ()=>{
@@ -51,7 +51,7 @@ const GameArea = () => {
                     clearInterval(s);
                 }
             }, 1);
-        }, 120);
+        }, 1000);
     }
 
     const initialStart = () => {
@@ -75,7 +75,10 @@ const GameArea = () => {
 
         d.addEventListener("click", (e) => {
 
+
+
             // BELOW APPROACH IS NOT WORKING CORRECTLY CHANGE IT WITH USING THE PROMISE AND AWAIT METHOD
+            // FIRST TRY TO ADD THE EXPAND CODE IN THE POS CHANGE FUNCTION
 
             shrink();
 
